@@ -1,0 +1,567 @@
+title EMPLOYEE ROLE WISE ACCESS
+link(rel='stylesheet' type='text/css' href='stylesheet/temp.css')  
+link(rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto|Varela+Round') 
+link(rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/icon?family=Material+Icons')  
+link(rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')  
+link(rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')  
+link(rel="stylesheet" href="css/bootstrap.min.css")
+link(rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css")
+link(rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css")
+link(rel='stylesheet' type='text/css' href='https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap.min.css')
+//- search
+link(rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css")
+style.
+ body{ height: 100vh;
+  width: 100%;
+  background:#5199E4;}
+
+  .modal .modal-dialog {
+  max-width: 4000px;
+  }
+    /* Full-width input fields */
+    
+    /* Set a style for all buttons */
+    button {
+    background-color: #04AA6D;
+    color: white;
+    margin-top: 8px ;
+    border: none;
+    cursor: pointer;
+  
+    }
+    button:hover {
+    opacity: 0.8;
+    }
+    /* Extra styles for the cancel button */
+    .cancelbtn{
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+    }
+    .submit {
+    width: auto;
+    padding: 10px 18px;
+    background-color:green;
+    }
+
+    /* Center the image and position the close button */
+    .container {
+    padding: 50px;
+    }
+  
+    table {
+    margin-top:150px;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    length :300px;
+    }
+    form{
+    text-align:center;
+   
+    }
+    td, th {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align:center;
+    }
+    tr:nth-child(even){
+    background-color: #dddddd;
+    }
+    .btn {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+ }
+
+
+ .btn-app {
+    color: white;
+    box-shadow: none;
+    border-radius: 3px;
+    position: relative;
+    padding: 10px 15px;
+    margin: 0;
+    min-width: 60px;
+    max-width: 80px;
+    text-align: center;
+    border: 1px solid #ddd;
+    background-color: #f4f4f4;
+    font-size: 12px;
+    transition: all .2s;
+    background-color: steelblue !important;
+ }
+
+ .btn-app > .fa, .btn-app > .glyphicon, .btn-app > .ion {
+    font-size: 30px;
+    display: block;
+ }
+
+ .btn-app:hover {
+    border-color: #aaa;
+    transform: scale(1.1);
+ }
+
+ .pdf {
+  background-color: #dc2f2f !important;
+ }
+
+ .excel {
+    background-color: #3ca23c !important;
+ }
+
+ .csv {
+    background-color: #e86c3a !important;
+ }
+
+ .imprimir {
+    background-color: #8766b1 !important;
+ }
+
+    /* Change styles for span and cancel button on extra small screens */             
+include includes/sidebar
+.container
+  .table-wrapper
+    .table-title
+      .row
+      
+        .col-sm-6
+          h2
+            b USER ROLE
+        
+         
+        .col-sm-6
+          a.btn.btn-success(href='#addEmployeeModal' data-toggle='modal')
+            i.material-icons &#xE147;
+            span Add New Role
+         
+        
+
+    table#example.display.table.table-striped.table-hover                                
+      thead
+        tr
+          th Id
+          th Role
+          th Edit
+          th Delete
+      tbody 
+        tr 
+          td 
+          td
+          td 
+          td
+      
+
+// ADD EMPLOYEE MODEL
+#addEmployeeModal.modal.fade
+  .modal-dialog
+    .modal-content
+      form(autocomplete='off' action="/employeerole"  method ='post' name="userroleform" )
+        .modal-header
+          h4.modal-title 
+          b ADD THE NEW ROLE
+          button.close(type='button' data-dismiss='modal' aria-hidden='true') &times;
+        .modal-body
+          .form-group     
+            label(for='role') Role
+            select.form-control(type='text' name='role' id='role')
+                option(value='') Choose Your Role
+                option(value='admin') Admin
+                option(value='manager') Manager
+                option(value='employee') Employee
+                option(value='user') User
+            
+            table#userroletable.display.table.table-striped.table-hover          
+                tr
+                    th
+                        b Module
+                    th
+                        b Enable 
+                    th
+                    th
+                        b ADD
+                    th
+                        b EDIT
+                    th
+                        b DELETE
+                    th
+                        b VIEW
+                tr
+                    td Dashboard
+                   
+                    td
+                       input#checkall(type='checkbox')
+                    td
+                    td
+                        input#checkbox1(type='checkbox')
+                        input#add(type='hidden' name="menu")
+                    td
+                        input#checkbox2(type='checkbox')
+                        input#edit(type='hidden' name="menu")
+                    td
+                        input#checkbox3(type='checkbox')
+                        input#delete(type='hidden' name="menu")
+                    td
+                        input#checkbox4(type='checkbox')
+                        input#view(type='hidden' name="menu")
+                    tr
+                    td User Role
+                    
+                    td
+                        input#checkall1(type='checkbox')
+                    td
+                    td
+                        input#checkbox5(type='checkbox')
+                        input#add1(type='hidden' name="menu")
+                    td
+                        input#checkbox6(type='checkbox')
+                        input#edit1(type='hidden' name="menu")
+                    td 
+                        input#checkbox7(type='checkbox')
+                        input#delete1(type='hidden' name="menu")
+                    td
+                        input#checkbox8(type='checkbox')
+                        input#view1(type='hidden' name="menu")
+        .modal-footer
+          input.btn.btn-default(type='button' data-dismiss='modal' value='Cancel')
+          input#add_submit.btn.btn-success(type='submit' value='ADD' data-toggle='modal' data-target='#addEmployeeModal' data-backdrop='static' data-keyboard='false') 
+
+           
+// Edit Modal HTML
+#editEmployeeModal.modal.fade
+  .modal-dialog
+    .modal-content
+      form#editform(name='editform' action='/employeeroleupdate/:id', method='post')
+        .modal-header
+          h4.modal-title 
+                b   Edit Employee Role
+          button.close(type='button' data-dismiss='modal' aria-hidden='true')
+        .modal-body
+          .form-group
+           input#id(type='hidden' name='id')
+           .form-group
+           .form-group
+            label  Role
+            input#role.form-control(type='text')
+              
+            .form-group
+             table#userrole
+              thead
+                tr
+                    th
+                        b Module
+                    th
+                        b Enable 
+                    th
+                    th
+                        b ADD
+                    th
+                        b EDIT
+                    th
+                        b DELETE
+                    th
+                        b VIEW
+              tbody      
+                tr
+                    td Dashboard
+                   
+                    td
+                        input#enable(type='checkbox') 
+                    td
+                    td
+                        input(type='checkbox' ) 
+                    td
+                        input(type='checkbox' )
+                    td
+                        input(type='checkbox' )
+                    td
+                        input(type="checkbox"  )
+                    tr
+                    td User Role
+                  
+                    td
+                        input#enable(type='checkbox') 
+                    td
+                    td
+                        input(type='checkbox' ) 
+                    td
+                        input(type='checkbox' )
+                    td
+                        input(type='checkbox' )
+                    td
+                        input(type='checkbox'   )
+
+        .modal-footer
+          input.btn.btn-default(type='button' data-dismiss='modal' value='Cancel')
+         
+          button#edit_submit.btn.btn-info(data-toggle='modal' data-target='#editEmployeeModal' value='submit' class="#edit_submit" data-backdrop='static' data-keyboard='false') UPDATE 
+
+     
+
+script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
+//- jquery
+script(src="http://code.jquery.com/jquery.js")
+
+//- script(type='text/javascript').
+//-  $('#clear').click(function(e) {
+//-     e.preventDefault();
+//-     localStorage.clear(); 
+//-     $('#department').val('');userroletable
+//-     window.location = "home";
+//-   });
+ 
+          
+script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+script(type='text/javascript' src='scripts/userrole.js')
+
+script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+script(src='https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js')
+script(src='https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js')
+script(type='text/javascript' src='js/bootstrap.js')
+script(src="//code.jquery.com/jquery-1.11.0.min.js")
+script(src="js/jquery.min.js" type="text/javascript")
+script(src="js/jquery.dataTables.min.js" type="text/javascript")
+script(src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous")
+
+script(src="js/jquery-3.5.1.min.js")
+script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js")
+script(src="jquery-3.6.0.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js" integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg==" crossorigin="anonymous" sreferrerpolicy="no-referrer")
+
+
+script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+script(src='https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js')
+
+
+
+
+
+script(src='https://code.jquery.com/jquery-3.5.1.js')
+script(src='https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js')
+script(src='https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js')
+script(src='https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js')
+script(src='https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js')
+script.
+    
+        $(document).ready(function() {
+        //set initial state.
+        $('#add').val($(this).is(':checked'));
+        $('#edit').val($(this).is(':checked'));
+        $('#delete').val($(this).is(':checked'));
+        $('#view').val($(this).is(':checked'));
+        $('#checkall').val($(this).is(':checked'));
+
+        $('#checkall').change(function() {
+            $('#edit').val($(this).is(':checked'));
+        });
+         $('#checkall').change(function() {
+            $('#delete').val($(this).is(':checked'));
+        });
+         $('#checkall').change(function() {
+            $('#view').val($(this).is(':checked'));
+        });
+         $('#checkall').change(function() {
+            $('#add').val($(this).is(':checked'));
+        });
+         $('#checkbox2').change(function() {
+            $('#edit').val($(this).is(':checked'));
+        });
+         $('#checkbox3').change(function() {
+            $('#delete').val($(this).is(':checked'));
+        });
+        $('#checkbox4').change(function() {
+            $('#view').val($(this).is(':checked'));
+        });
+        $('#checkbox1').change(function() {
+            $('#add').val($(this).is(':checked'));
+        });
+
+            $("#checkall").change(function () {
+                    var checked = $(this).is(':checked');
+                    if (checked) {
+                        $("#checkbox1").each(function () {
+                            $(this).prop("checked", true);
+                           
+                        });
+                        $("#checkbox2").each(function () {
+                            $(this).prop("checked", true);
+                           
+                          
+                        });
+                        $("#checkbox3").each(function () {
+                            $(this).prop("checked", true);
+                           
+                          
+                        });
+                        $("#checkbox4").each(function () {
+                            $(this).prop("checked", true);
+                           
+                        });
+                    } else {
+                        $("#checkbox1").each(function () {
+                            $(this).prop("checked", false);
+                            
+                        });
+                        $("#checkbox2").each(function () {
+                            $(this).prop("checked", false);
+                          
+                        });
+                         $("#checkbox3").each(function () {
+                            $(this).prop("checked", false);
+                          
+                        });
+                         $("#checkbox4").each(function () {
+                            $(this).prop("checked", false);
+                          
+                        });
+
+                    }
+                });
+                 
+            });
+
+
+      $(document).ready(function() {
+        //set initial state.
+        $('#add1').val($(this).is(':checked'));
+        $('#edit1').val($(this).is(':checked'));
+        $('#delete1').val($(this).is(':checked'));
+        $('#view1').val($(this).is(':checked'));
+        $('#checkall1').val($(this).is(':checked'));
+
+        $('#checkall1').change(function() {
+           $('#edit1').val($(this).is(':checked'));
+        });
+        $('#checkall1').change(function() {
+            $('#delete1').val($(this).is(':checked'));
+        });
+        $('#checkall1').change(function() {
+            $('#view1').val($(this).is(':checked'));
+        });
+        $('#checkall1').change(function() {
+            $('#add1').val($(this).is(':checked'));
+        });
+        $('#checkbox6').change(function() {
+            $('#edit1').val($(this).is(':checked'));
+        });
+        $('#checkbox7').change(function() {
+            $('#delete1').val($(this).is(':checked'));
+        });
+        $('#checkbox8').change(function() {
+            $('#view').val($(this).is(':checked'));
+        });
+        $('#checkbox5').change(function() {
+            $('#add').val($(this).is(':checked'));
+        });
+            $("#checkall1").change(function () {
+                    var checked = $(this).is(':checked');
+                    if (checked) {
+                        $("#checkbox5").each(function () {
+                            $(this).prop("checked", true);
+                           
+                        });
+                        $("#checkbox6").each(function () {
+                            $(this).prop("checked", true);
+                           
+                          
+                        });
+                        $("#checkbox7").each(function () {
+                            $(this).prop("checked", true);
+                           
+                          
+                        });
+                        $("#checkbox8").each(function () {
+                            $(this).prop("checked", true);
+                           
+                        });
+                    } else {
+                        $("#checkbox5").each(function () {
+                            $(this).prop("checked", false);
+                            
+                        });
+                        $("#checkbox6").each(function () {
+                            $(this).prop("checked", false);
+                          
+                        });
+                         $("#checkbox7").each(function () {
+                            $(this).prop("checked", false);
+                          
+                        });
+                         $("#checkbox8").each(function () {
+                            $(this).prop("checked", false);
+                          
+                        });
+
+                    }
+                });
+                 
+            });
+
+                                    
+                                    //- $('#add_submit').click(function(e)  {
+                                    //-     e.preventDefault();
+                                    //-     var add  = $('#add').val();
+                                    //-     var edit= $('#edit').val();
+                                    //-     var delete= $('#delete').val();
+                                    //-     var view= $('#view').val();
+                                    //-     var add1  = $('#add1').val();
+                                    //-     var edit1= $('#edit1').val();
+                                    //-     var delete1= $('#delete1').val();
+                                    //-     var view1= $('#view1').val();
+                                    //-     var sidebar = [];
+                                    //-     var access = {
+                                    //-     {
+                                    //-         {
+                                    //-             "module": "dashboard",
+                                    //-             "actions":{
+                                    //-             "show":"true", 
+                                    //-             "add": add,
+                                    //-             "edit": edit,
+                                    //-             "delete": delete,
+                                    //-             "view": view,
+                                    //-             }
+                                    //-         },
+                                    //-         {
+                                    //-             "module": "userrole",
+                                    //-             "actions":{
+                                    //-             "show":"true",
+                                    //-             "add": add1,
+                                    //-             "edit": edit1,
+                                    //-             "delete": delete1,
+                                    //-             "view": view
+                                    //-             }
+                                    //-         }
+                                            
+                                    //-     }
+                                    //-     }
+                                    //-     sidebar.push(access);
+
+                                    //-     var menu = {sidebar : sidebar}
+                                        
+                                    //-     $.ajax({
+                                    //-         type: 'post',
+                                    //-         url: '/employeerole',
+                                    //-         data: {menu:menu},
+                                    //-         dataType: 'json',
+                                            
+                                    //-         })
+                                    //- });
+                                    
+
+
+                                                

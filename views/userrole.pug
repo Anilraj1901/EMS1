@@ -1,0 +1,50 @@
+doctype html
+head
+  title
+    | User Role
+  link(rel='stylesheet' type='text/css' href='stylesheet/styles.css')  
+
+  
+    
+.container
+  .text User Role
+
+  form(name="myform"  id="reg" action="/employeerole"   method ='post' autocomplete="off")
+   
+    .data 
+      label(for='department') Department
+      select(id="department" name="department")
+        option(value='item0') Select Your Department
+        option(value='Development') Development
+        option(value='Management') Management
+        option(value='Human Resource') Human Resource
+        option(value='Bussiness') Bussiness
+    .data 
+      label(for='role') Role
+      select#role( name="role")
+        option(value='')  Select Your Role 
+    .btn
+      button(type='submit' value='submit' id="submit") ADD
+    
+script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+script(type='text/javascript').
+  
+          $(document).ready(function () {
+          $("#department").change(function () {
+              var val = $(this).val();
+              if (val == "Development") {
+                  $("#role").html("<option value='fullstack developer'>Fullstack Developer</option><option value='ios developer'>IOS Developer</option><option value='android developer'>Android Developer</option>>");
+              } else if (val == "Management") {
+                  $("#role").html("<option value='admin'>Admin</option><option value='general manager'>General Manager</option><option value='manager'>Manager</option><option value='assistant manager'>Assistant Manager</option>");
+              } else if (val == "Human Resource") {
+                  $("#role").html("<option value='senior'>Senior</option><option value='junior'>junior</option>");
+              } else if (val == "Bussiness") {
+                  $("#role").html("<option value='manager'>Manager</option><option value='assistant manager'>Assistant Manager</option><option value='senior sales excecutive'>Senior Sales Excecutive</option><option value='junior sales excecutive'>junior Sales Excecutive</option>");
+              }else if (val == "item0") {
+                  $("#role").html("<option value=''>--Select Your Role--</option>");
+              }
+          });
+      }); 
+        
+
+         
